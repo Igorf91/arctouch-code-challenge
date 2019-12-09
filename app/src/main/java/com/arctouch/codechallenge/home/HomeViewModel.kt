@@ -19,8 +19,8 @@ class HomeViewModel(private val api: TmdbApi) : ViewModel() {
     val error: LiveData<Throwable> = _error
 
     @SuppressLint("CheckResult")
-    fun fetchUpcomingMovies() {
-        api.upcomingMovies(1)
+    fun fetchUpcomingMovies(page: Long = 1L) {
+        api.upcomingMovies(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

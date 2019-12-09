@@ -11,9 +11,13 @@ import com.arctouch.codechallenge.util.MovieImageUrlBuilder
 import com.arctouch.codechallenge.util.formatDate
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.movie_item.view.genresTextView
+import kotlinx.android.synthetic.main.movie_item.view.posterImageView
+import kotlinx.android.synthetic.main.movie_item.view.releaseDateTextView
+import kotlinx.android.synthetic.main.movie_item.view.titleTextView
 
-class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(private val movies: ArrayList<Movie>) :
+    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -33,6 +37,11 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
                 it.context.startActivity(DetailsActivity(it.context, movie))
             }
         }
+    }
+
+    fun postValue(newMovies: List<Movie>) {
+        movies.addAll(newMovies)
+        this.notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
