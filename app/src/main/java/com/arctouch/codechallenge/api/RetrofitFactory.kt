@@ -7,26 +7,28 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RetrofitFactory {
 
-    private var client = OkHttpClient.Builder().addInterceptor { chain ->
-        var request = chain.request()
-        val url = request.url()
-            .newBuilder()
-            .addQueryParameter("api_key", TmdbApi.API_KEY)
+    companion object {
+        private var client = OkHttpClient.Builder().addInterceptor { chain ->
+            var request = chain.request()
+            val url = request.url()
+                .newBuilder()
+                .addQueryParameter("api_key", TmdbApi.API_KEY)
+                .build()
+
+            request = request
+                .newBuilder()
+                .url(url)
+                .build()
+
+            chain.proceed(request)
+        }.build()
+
+        fun getApi(): TmdbApi = Retrofit.Builder()
+            .baseUrl(TmdbApi.URL)
+            .client(client)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-
-        request = request
-            .newBuilder()
-            .url(url)
-            .build()
-
-        chain.proceed(request)
-    }.build()
-
-    fun getApi() : TmdbApi = Retrofit.Builder()
-        .baseUrl(TmdbApi.URL)
-        .client(client)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-        .create(TmdbApi::class.java)
+            .create(TmdbApi::class.java)
+    }
 }
