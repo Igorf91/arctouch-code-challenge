@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".details.DetailsActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backdropDetailImageView"
+            android:layout_width="0dp"
+            android:layout_height="224dp"
+            android:src="@drawable/ic_image_placeholder"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/posterDetailImageView"
+            android:layout_width="128dp"
+            android:layout_height="192dp"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_image_placeholder"
+            app:layout_constraintBottom_toBottomOf="@id/backdropDetailImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backdropDetailImageView"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/movieNameDetailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/posterDetailImageView"
+            app:layout_constraintTop_toBottomOf="@+id/backdropDetailImageView"
+            tools:text="Star Wars: A Ascenção Skywalker" />
+
+        <TextView
+            android:id="@+id/releaseDateDetailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@id/movieNameDetailTextView"
+            app:layout_constraintTop_toBottomOf="@id/movieNameDetailTextView"
+            tools:text="19/12/2019" />
+
+        <TextView
+            android:id="@+id/genresDetailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@id/movieNameDetailTextView"
+            app:layout_constraintStart_toEndOf="@id/releaseDateDetailTextView"
+            app:layout_constraintTop_toBottomOf="@id/movieNameDetailTextView"
+            tools:text="Drama, Romance, Thriller" />
+
+        <TextView
+            android:id="@+id/overviewMovieDetailTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/posterDetailImageView"
+            tools:text="@tools:sample/lorem/random" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
